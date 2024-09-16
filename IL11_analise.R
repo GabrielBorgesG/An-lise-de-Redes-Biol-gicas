@@ -196,7 +196,10 @@ library(org.Hs.eg.db)
 
 # Enriquecimento por ontologia gênica
 for(i in 1:15){
-  PB <- enrichGO(gene = Cluster_1, OrgDb = org.Hs.eg.db, keyType = "ENTREZID", ont = "BP",
+
+  lista_de_genes = as.list(Cluster_1)
+  
+  PB <- enrichGO(gene = lista_de_genes, OrgDb = org.Hs.eg.db, keyType = "ENTREZID", ont = "BP",
                  pAdjustMethod = "BH", pvalueCutoff  = 0.05, qvalueCutoff  = 0.2)
   head(PB)
   barplot(PB, showCategory=10)
